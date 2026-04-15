@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Remédios</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #020617;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      color: #38bdf8;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e2e8f0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    .sobre {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: #020617;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      margin-top: 20px;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .sobre {
+        padding: 0 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      section {
+        padding: 30px 15px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Remédios</h1>
+  <nav>
+    <a href="#sobre">Sobre mim</a>
+    <a href="#projetos">Meus Projetos</a>
+  </nav>
+</header>
+
+<main>
+  <section id="sobre" class="sobre">
+    <h2>Sobre mim</h2>
+    <p>Olá! Me chamo Remédios, sou desenvolvedora em formação apaixonada por tecnologia e criação de soluções web. Estou em constante aprendizado buscando evoluir minhas habilidades em desenvolvimento front-end.</p>
+  </section>
+
+  <section id="projetos">
+    <h2 style="text-align:center;">Meus Projetos</h2>
+    <div class="projetos" id="listaProjetos"></div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 - Remédios | Todos os direitos reservados</p>
+</footer>
+
+<script>
+  const projetos = [
+    {
+      nome: "Sistema Escolar",
+      descricao: "Projeto simples para gerenciamento de alunos",
+      link: "https://meusistema.com"
+    },
+    {
+      nome: "Portfólio Pessoal",
+      descricao: "Site para apresentar meus projetos e habilidades",
+      link: "https://meuportfolio.com"
+    },
+    {
+      nome: "Lista de Tarefas",
+      descricao: "Aplicação simples de controle de tarefas",
+      link: "https://tarefas.com"
+    }
+  ];
+
+  const lista = document.getElementById("listaProjetos");
+
+  function renderizarProjetos() {
+    lista.innerHTML = "";
+
+    projetos.forEach(projeto => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <h3>${projeto.nome}</h3>
+        <p>${projeto.descricao}</p>
+        <a href="${projeto.link}" target="_blank">Ver projeto</a>
+      `;
+
+      lista.appendChild(card);
+    });
+  }
+
+  // Chamada da função
+  renderizarProjetos();
+</script>
+
+</body>
+</html>
